@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Define
 {
+
+    public enum ObjectType
+    {
+        Unknown,
+        Player,
+        Monster,
+    }
     public enum State
     {
         Idle,

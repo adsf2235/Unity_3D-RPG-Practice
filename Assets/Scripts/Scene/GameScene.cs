@@ -10,10 +10,12 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 
-       // Managers.UI.ShowPopupUI<UI_Button>("UI_Button");
+        // Managers.UI.ShowPopupUI<UI_Button>("UI_Button");
 
         //temp
-       // Managers.UI.ShowSceneUI<UI_Inven>();
+        // Managers.UI.ShowSceneUI<UI_Inven>();
+
+        Managers.Game.Spawn(Define.ObjectType.Player, "unitychan");
 
       
     }
