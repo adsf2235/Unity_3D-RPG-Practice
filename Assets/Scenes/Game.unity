@@ -6579,7 +6579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  delta: {x: 0, y: 6, z: -5}
+  delta: {x: 0, y: 6, z: -7.5}
   player: {fileID: 0}
 --- !u!81 &1137755819
 AudioListener:
