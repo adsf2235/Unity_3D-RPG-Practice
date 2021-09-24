@@ -10,14 +10,15 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     Vector3 delta = new Vector3(0.0f,6.0f,-7.5f);
 
+
     [SerializeField]
     GameObject player = null;
 
 
 
-
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 

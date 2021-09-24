@@ -15,7 +15,7 @@ public class GameScene : BaseScene
         //temp
         // Managers.UI.ShowSceneUI<UI_Inven>();
 
-        Managers.Game.Spawn(Define.ObjectType.Player, "unitychan");
+       // Managers.Game.Spawn(Define.ObjectType.Player, "unitychan");
 
       
     }
