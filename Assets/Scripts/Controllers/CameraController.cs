@@ -16,9 +16,16 @@ public class CameraController : MonoBehaviour
 
 
 
+
+
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+     
 
     }
 
@@ -26,8 +33,8 @@ public class CameraController : MonoBehaviour
     {
         RaycastHit hit;
 
-        
 
+        
         if (mode == Define.CameraMode.QuarterView)
         {
             if (Physics.Raycast(player.transform.position, delta, out hit, delta.magnitude, LayerMask.GetMask("Wall")))
