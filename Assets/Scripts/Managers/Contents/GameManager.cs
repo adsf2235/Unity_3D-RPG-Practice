@@ -23,4 +23,34 @@ public class GameManager
 
         return go;
     }
+
+    public Define.ObjectType GetObjectType(GameObject go)
+    {
+        return go.GetComponent<BaseController>().type;
+    }
+
+    public void DeSpawn(GameObject go)
+    {
+        Define.ObjectType type = GetObjectType(go);
+
+        switch (type)
+        {
+            
+            case Define.ObjectType.Player:
+                if (_player ==go)
+                {
+                    _player = null;
+                }
+                break;
+            case Define.ObjectType.Monster:
+                if (_monsters.Contains(go))
+                {
+                    _monsters.Remove(go);
+                }
+                break;
+
+        }
+
+        Managers.Resource.Destroy(go);
+    }
 }

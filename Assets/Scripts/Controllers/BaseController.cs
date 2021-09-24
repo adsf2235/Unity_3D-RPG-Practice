@@ -15,6 +15,8 @@ public abstract class BaseController : MonoBehaviour
     [SerializeField]
     protected Define.State _state = Define.State.Idle;
 
+    public Define.ObjectType type { get; protected set; }
+
 
     private void Start()
     {
@@ -72,6 +74,8 @@ public abstract class BaseController : MonoBehaviour
                 UpdateSkill();
                 break;
         }
+
+    
     }
 
     protected virtual void UpdateIdle() { }

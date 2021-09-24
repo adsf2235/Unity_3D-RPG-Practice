@@ -12,6 +12,8 @@ public class PlayerController : BaseController
 
     int _mask = (1 << (int)Define.Layer.Floor | 1 << (int)Define.Layer.Monster);
 
+    
+
 
     protected override void Init()
     {
@@ -23,8 +25,12 @@ public class PlayerController : BaseController
         {
             Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform);
         }
+
+        type = Define.ObjectType.Player;
        
     }
+
+
 
 
 
@@ -53,6 +59,11 @@ public class PlayerController : BaseController
 
     protected override void UpdateSkill()
     {
+        if (_stat.hp <= 0)
+        {
+            State = Define.State.Die;
+            return;
+        }
         if (_lockTarget != null)
         {
             Vector3 dir = _lockTarget.transform.position - transform.position;
@@ -64,13 +75,24 @@ public class PlayerController : BaseController
     }
     protected override void UpdateIdle()
     {
+        if (_stat.hp <= 0)
+        {
+            State = Define.State.Die;
+            return;
+        }
     }
     protected override void UpdateDie()
     {
-
+        Managers.Game.DeSpawn(this.gameObject);
     }
     protected override void UpdateMoving()
     {
+        if (_stat.hp <= 0)
+        {
+            State = Define.State.Die;
+            return;
+        }
+   
         if (_lockTarget != null)
         {
 

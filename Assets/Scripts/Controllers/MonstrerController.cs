@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class MonstrerController : BaseController
 {
     Stat _stat;
+
+   
     protected override void Init()
     {
         _stat = GetComponent<Stat>();
@@ -15,6 +17,8 @@ public class MonstrerController : BaseController
         {
             Managers.UI.MakeWorldSpaceUI<UI_HPBar>(transform);
         }
+
+        type = Define.ObjectType.Monster;
     }
 
     float _scanRange = 10f;

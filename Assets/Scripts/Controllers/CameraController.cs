@@ -31,12 +31,18 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+
+
         RaycastHit hit;
 
 
         
         if (mode == Define.CameraMode.QuarterView)
         {
+            if (player ==null || player.activeSelf == false)
+            {
+                return;
+            }
             if (Physics.Raycast(player.transform.position, delta, out hit, delta.magnitude, LayerMask.GetMask("Wall")))
             {
                 float dist = (hit.point - player.transform.position).magnitude * 0.8f;
