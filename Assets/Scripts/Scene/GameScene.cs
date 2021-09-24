@@ -18,6 +18,7 @@ public class GameScene : BaseScene
 
 
         GameObject player = Managers.Game.Spawn(Define.ObjectType.Player, "unitychan");
+        Managers.Game.Spawn(Define.ObjectType.Monster, "Bear");
 
         Camera.main.gameObject.GetComponent<CameraController>().SetPlayer(player);
 
