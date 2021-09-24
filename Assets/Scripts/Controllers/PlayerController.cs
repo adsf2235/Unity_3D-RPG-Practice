@@ -42,8 +42,7 @@ public class PlayerController : BaseController
             Stat lockTargetStat = _lockTarget.GetComponent<Stat>();
             PlayerStat myStat = GetComponent<PlayerStat>();
 
-            int damage = myStat.attack - lockTargetStat.defense;
-            lockTargetStat.hp -= Mathf.Max(0, damage);
+            lockTargetStat.OnAttacked(myStat);
         }
 
 
@@ -59,11 +58,7 @@ public class PlayerController : BaseController
 
     protected override void UpdateSkill()
     {
-        if (_stat.hp <= 0)
-        {
-            State = Define.State.Die;
-            return;
-        }
+        
         if (_lockTarget != null)
         {
             Vector3 dir = _lockTarget.transform.position - transform.position;
@@ -75,23 +70,15 @@ public class PlayerController : BaseController
     }
     protected override void UpdateIdle()
     {
-        if (_stat.hp <= 0)
-        {
-            State = Define.State.Die;
-            return;
-        }
+     
     }
     protected override void UpdateDie()
     {
-        Managers.Game.DeSpawn(this.gameObject);
+       
     }
     protected override void UpdateMoving()
     {
-        if (_stat.hp <= 0)
-        {
-            State = Define.State.Die;
-            return;
-        }
+        
    
         if (_lockTarget != null)
         {

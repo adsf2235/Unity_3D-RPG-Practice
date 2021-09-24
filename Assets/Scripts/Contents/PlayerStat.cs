@@ -9,4 +9,9 @@ public class PlayerStat : Stat
 
 
     public int exp { get { return _exp; } set { _exp = value; } }
+
+    public override void OnDead()
+    {
+        Debug.Log("Dead");
+    }
 }

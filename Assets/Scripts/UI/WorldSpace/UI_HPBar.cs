@@ -22,7 +22,10 @@ public class UI_HPBar : UI_Base
         Transform parent = transform.parent;
         transform.position = parent.position + Vector3.up * (parent.gameObject.GetComponent<Collider>().bounds.size.y + 0.3f);
         transform.rotation = Camera.main.transform.rotation;
-
+        if (_stat.hp <= 0)
+        {
+            _stat.hp = 0;
+        }
         float ratio = _stat.hp / (float)_stat.maxHp;
         SetHpRatio(ratio);
     }

@@ -29,8 +29,12 @@ public class MonstrerController : BaseController
     protected override void UpdateIdle()
     {
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
-        _lockTarget = _player;
-        _destPos = _lockTarget.transform.position - transform.position;
+        if (_player != null && _player.activeSelf == true)
+        {
+            _lockTarget = _player;
+            _destPos = _lockTarget.transform.position - transform.position;
+        }
+       
 
         float _distance = _destPos.magnitude;
 
@@ -79,6 +83,13 @@ public class MonstrerController : BaseController
             Quaternion quat = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.Lerp(transform.rotation, quat, 20 * Time.deltaTime);
         }
+
+        if (_lockTarget.activeSelf == false)
+        {
+
+            State = Define.State.Idle;
+            return;
+        }
     }
 
     void OnHitEvent()
@@ -88,9 +99,10 @@ public class MonstrerController : BaseController
             Stat lockTargetStat = _lockTarget.GetComponent<Stat>();
             Stat myStat = GetComponent<Stat>();
 
-            int damage = myStat.attack - lockTargetStat.defense;
-            lockTargetStat.hp -= Mathf.Max(0, damage);
+            lockTargetStat.OnAttacked(myStat);
         }
+        
+        
 
         _destPos = _lockTarget.transform.position - transform.position;
         float _distance = _destPos.magnitude;
